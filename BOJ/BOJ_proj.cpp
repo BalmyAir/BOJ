@@ -1173,3 +1173,204 @@ void printContactNum(void)
 
 		}
 	}*/
+
+/*2164*/
+/*#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <queue>
+
+using namespace std;
+int main()
+{
+	int num = 0;
+	cin >> num;
+	queue<int> q;
+
+	for (int i = 0; i < num; i++)
+	{
+		q.push(i+1);
+		
+	}
+	
+
+
+	while (q.size() != 1)
+	{
+		q.pop();
+		q.push(q.front());
+		q.pop();
+	}
+
+	cout << q.front() << "\n";
+	return 0;
+}*/
+
+/*11866*/
+/*#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+int main()
+{
+	int num = 0;
+	int number = 0;
+	queue<int> q;
+	cin >> num >> number;
+	cout << "<";
+
+	for (int j = 0; j < num; j++)
+	{
+		q.push(j + 1);
+	}
+
+	while (q.size() != 0)
+	{
+		for (int i = 0; i < number-1; i++)
+		{
+			q.push(q.front());
+			q.pop();
+		}
+		if (q.size() != 1)
+			cout << q.front() << ", ";
+		else
+			cout << q.front();
+		
+		q.pop();
+	}
+	cout << ">";
+	return 0;
+}*/
+
+/*1966*/
+/*#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+int main()
+{
+	int num = 0;	//testcase
+	int Dnum = 0;	//문서개수
+	int purpose = 0;	//목표하는 인덱스
+	int temp = 0;
+	int count = 0;
+	cin >> num;
+
+	for (int i = 0; i < num; i++)
+	{
+		cin >> Dnum >> purpose;
+		queue<pair<int, int>> q;
+		priority_queue<int> pq;
+		for (int j = 0; j < Dnum; j++)
+		{
+			cin >> temp;
+			q.push({ j,temp });
+			pq.push(temp);
+		}
+		
+		while (!q.empty())
+		{
+			int fir = q.front().first;
+			int sec = q.front().second;
+			q.pop();
+			if (sec < pq.top())
+			{
+				q.push({ fir, sec });
+			}
+			else if (sec == pq.top())
+			{
+				++count;
+				pq.pop();
+				if (fir == purpose)
+				{
+					cout << count << "\n";
+					break;
+				}
+					
+			}
+		}
+		count = 0;
+		
+	}
+	return 0;
+}*/
+
+/*10866*/
+/*#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <deque>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	int TC = 0;
+	string mission;
+	int temp = 0;
+	deque<int> dq;
+
+	cin >> TC;
+	for (int i = 0; i < TC; i++)
+	{
+		cin >> mission;
+		//getline(cin, mission);
+		if (mission == "push_front")
+		{
+			cin >> temp;
+			dq.push_front(temp);
+		}
+		else if (mission == "push_back")
+		{
+			cin >> temp;
+			dq.push_back(temp);
+		}
+		else if (mission == "pop_front")
+		{
+			if (dq.empty())
+				cout << -1 << "\n";
+			else
+			{
+				cout << dq.front() << "\n";
+				dq.pop_front();
+			}
+		}
+		else if (mission == "pop_back")
+		{
+			if (dq.empty())
+				cout << -1 << "\n";
+			else
+			{
+				cout << dq.back() << "\n";
+				dq.pop_back();
+			}
+		}
+		else if (mission == "size")
+			cout << dq.size() << "\n";
+		else if (mission == "empty")
+		{
+			if (dq.empty())
+				cout << 1 << "\n";
+			else
+				cout << 0 << "\n";
+		}
+		else if (mission == "front")
+		{
+			if (dq.empty())
+				cout << -1 << "\n";
+			else
+				cout << dq.front() << "\n";
+		}
+		else if (mission == "back")
+		{
+			if (dq.empty())
+				cout << -1 << "\n";
+			else
+				cout << dq.back() << "\n";
+		}
+	}
+	return 0;
+}*/
