@@ -1374,3 +1374,50 @@ int main()
 	}
 	return 0;
 }*/
+
+/*1021*/
+/*#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+
+using namespace std;
+
+int main()
+{
+	int N = 0;
+	int howMany = 0;
+	int count = 0;
+	int num = 0;
+	vector<int> deque;
+
+	cin >> N >> howMany;
+
+	for (int i = 0; i < N; i++)//1~N까지 q
+	{
+		deque.push_back(i + 1);
+		cout << deque[i] <<"\n";
+	}
+
+	for (int j = 0; j < howMany; j++)//목표하는 index 받기
+	{
+		cin >> num;
+		for (int k = 0; k < N; k++)
+		{
+			if (deque[k] == num)
+			{
+				count += min(k, N - k);
+				rotate(deque.begin(), deque.begin() + k + 1, deque.end() - j);
+				break;
+			}
+		}
+		N--;
+	}
+	
+	cout << count << "\n";
+
+	
+
+	return 0;
+}*/
