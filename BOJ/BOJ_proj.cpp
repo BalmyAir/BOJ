@@ -1421,3 +1421,91 @@ int main()
 
 	return 0;
 }*/
+
+/*5543*/
+/*#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	vector<int> v;
+	int temp=0;
+	int minham = 2000;
+	int minju = 0;
+
+	for (int i = 0; i < 5; i++)
+	{
+		cin >> temp;
+		v.push_back(temp);
+	}
+
+	for (int j = 0; j < 3; j++)
+	{
+		minham = min(minham, v[j]);
+	}
+	minju = min(v[3], v[4]);
+
+	cout << minham + minju - 50 << "\n";
+
+	return 0;
+}*/
+
+/*1920*/
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+
+int N, M;
+vector<int> A;
+
+int binarySearch(int low, int high, int target)
+{
+	
+	if (low > high)
+		return 0;
+	else
+	{
+		int mid = (low + high) / 2;
+		
+		if (A[mid] == target)
+			return 1;
+
+		else if (A[mid] > target)
+			return binarySearch(low, mid - 1, target);
+		else			
+			return binarySearch(mid + 1, high, target);
+
+	}
+}
+
+
+int main(void)
+{
+	ios_base::sync_with_stdio(0);
+	cin.tie(0); 
+	cin >> N;
+
+	for (int i = 0; i < N; i++)
+	{
+		int num;
+		cin >> num;
+		A.push_back(num);
+	}
+	sort(A.begin(), A.end()); 
+
+	cin >> M;
+	for (int i = 0; i < M; i++)
+	{
+		int num;
+		cin >> num;
+		cout << binarySearch(0, N - 1, num) << "\n"; 
+	}
+	return 0;
+}
