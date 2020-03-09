@@ -1455,7 +1455,7 @@ int main()
 }*/
 
 /*1920*/
-#define _CRT_SECURE_NO_WARNINGS
+/*#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -1506,6 +1506,57 @@ int main(void)
 		int num;
 		cin >> num;
 		cout << binarySearch(0, N - 1, num) << "\n"; 
+	}
+	return 0;
+}*/
+
+/*1920*///ÇÑ¹ø´õ
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int N, M;
+vector<int> v;
+
+int binarySearch(int left, int right, int target)
+{
+	if (left > right)
+		return 0;
+	else
+	{
+		int mid = (left + right) / 2;
+		if (v[mid] == target)
+			return 1;
+
+		else if (v[mid] > target)
+			return binarySearch(left, mid - 1, target);
+		else
+			return binarySearch(mid + 1, right, target);
+	}
+}
+
+int main()
+{
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cin >> N;
+
+	for (int i = 0; i < N; i++)
+	{
+		int temp;
+		cin >> temp;
+		v.push_back(temp);
+	}
+	sort(v.begin(), v.end());
+
+	cin >> M;
+	for (int j = 0; j < M; j++)
+	{
+		int temp2;
+		cin >> temp2;
+		cout << binarySearch(0, N-1, temp2) <<"\n";
 	}
 	return 0;
 }
