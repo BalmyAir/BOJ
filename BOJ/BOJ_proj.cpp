@@ -1511,7 +1511,7 @@ int main(void)
 }*/
 
 /*1920*///ÇÑ¹ø´õ
-#define _CRT_SECURE_NO_WARNINGS
+/*#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -1558,5 +1558,42 @@ int main()
 		cin >> temp2;
 		cout << binarySearch(0, N-1, temp2) <<"\n";
 	}
+	return 0;
+}*/
+
+/*11047*/
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+	int N, K, num, temp, count=0;
+	vector<int> v;
+	cin >> N >> K;
+
+	for (int i = 0; i < N; i++)
+	{
+		cin >> num;
+		v.push_back(num);
+	}
+
+	while (K != 0)
+	{
+		if (v.back() > K)
+			v.pop_back();
+		else
+		{
+			temp = K / v.back();
+			K -= temp * v.back();
+			count += temp;
+
+			if (v.size() != 0)
+			v.pop_back();
+		}
+	}
+	cout << count << "\n";
 	return 0;
 }
